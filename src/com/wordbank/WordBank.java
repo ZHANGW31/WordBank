@@ -1,4 +1,4 @@
 package com.wordbank;
 
-public class Game {
+public class WordBank {
 }
