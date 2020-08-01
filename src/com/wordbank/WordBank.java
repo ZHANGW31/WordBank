@@ -1,5 +1,13 @@
 package com.wordbank;
 
-public class WordBank {
-    // We are having a party tonight
+import java.util.Collection;
+
+public interface WordBank {
+
+    Collection<Word> findByWord(String word);
+
+    Word findByFirstLetter(char letter);
+
+    int lengthOfWord();
+
 }
