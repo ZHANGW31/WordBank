@@ -2,7 +2,9 @@ package com.wordbankclient;
 
 public class Game {
     public static void main(String[] args) {
-        // Enter code here
+
+
+        System.out.println("Welcome to the $WordBank$ heist game!");
 
     }
 
