@@ -7,9 +7,9 @@ public class Player {
 
     // INSTANCE VARIABLES - Fields, aka, Properties
 
-    public String name;
-    public int cash; // current score
-    public int lives; // current lives count
+    private String name;
+    private int cash; // current score
+    private int lives; // current lives count
 
     List<String> word = new ArrayList<>();
 
@@ -36,6 +36,10 @@ public class Player {
     // BUSINESS METHOD
 
     public void startGame() {
+
+    }
+
+    public void answerTheQuestion() {
 
     }
 
