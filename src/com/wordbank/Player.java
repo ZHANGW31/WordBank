@@ -11,7 +11,7 @@ public class Player {
     private int cash; // current score
     private int lives; // current lives count
 
-    List<String> word = new ArrayList<>();
+    List<String> usedWord = new ArrayList<>(); // List to store all the used word by the player
 
     // CONSTRUCTORS
 
