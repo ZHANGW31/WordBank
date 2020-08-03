@@ -6,10 +6,13 @@ import java.util.Collection;
 public class WordBankCollection implements WordBank {
 
     //fields and attributes
-    private ArrayList<Word> worldList = new ArrayList<>();
+    private ArrayList<Word> allWordList = new ArrayList<>(); //All of the words will be stored in this list.
 
+    private ArrayList<Word> easyWordList = new ArrayList<>(); //Easy category words will be stored in this list.
 
+    private ArrayList<Word> mediumWordList = new ArrayList<>(); // Medium category words will be stored in this list.
 
+    private ArrayList<Word> hardWordList = new ArrayList<>(); // Hard category words will be stored in this list.
 
     //Constructors
 

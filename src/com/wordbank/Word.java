@@ -1,12 +1,21 @@
 package com.wordbank;
 
-public class Word {
+import java.util.Comparator;
+import java.util.List;
+
+public class Word implements Comparator {
     // instance- variables, fields and attributes
     private  int lengthOfWords; // number of characters of words
-    private char firstLetter; // starting character fo word for question
 
     // Enum instance
     private Level level = Level.EASY;
+
+    // Constructors
+    public Word(){
+        // no args
+    }
+
+
 
     //Business Method
     public String categorizeWord(){ // Method to determine the word in different category
@@ -32,13 +41,7 @@ public class Word {
         this.lengthOfWords = lengthOfWords;
     }
 
-    public char getFirstLetter() {
-        return firstLetter;
-    }
 
-    public void setFirstLetter(char firstLetter) {
-        this.firstLetter = firstLetter;
-    }
 
     public Level getLevel() {
         return level;
@@ -46,5 +49,12 @@ public class Word {
 
     public void setLevel(Level level) {
         this.level = level;
+    }
+
+
+    // Method to compare
+    @Override
+    public int compare(Object o1, Object o2) {
+        return 0;
     }
 }

@@ -13,7 +13,7 @@ public class Player {
     private static int currentLives = 1; // player starts with current live
     private static int maxLives = 3; // Player can get 3 lives
 
-    List<String> word = new ArrayList<>();
+    List<String> usedWord = new ArrayList<>(); // List to store all the used word by the player
 
     // CONSTRUCTORS
 
@@ -54,8 +54,9 @@ public class Player {
 //    }
     }
 
-    public void answerTheQuestion() {
+    public String answerTheQuestion(String answer) {
 
+        return answer;
     }
 
     public void cashOut() {
