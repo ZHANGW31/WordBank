@@ -1,9 +1,8 @@
 package com.wordbankclient;
 
+import com.wordbank.Player;
 import com.wordbank.QuestionFactory;
-import org.w3c.dom.ls.LSOutput;
 
-import java.sql.SQLOutput;
 import java.io.Console;
 import java.util.Scanner;
 
@@ -24,6 +23,13 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
 
+        Player player = new Player();
+        String playerInput = player.answerTheQuestion(scanner.nextLine()); // allows player to input word
+
+        // TODO: for certain level, if player answer is correct, player cashbalance will be added
+        /*if((level.getValue()) && playerInput.length()<=3 ){
+            player.cashOut();
+        }*/
 
 
     }

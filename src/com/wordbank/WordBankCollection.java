@@ -14,7 +14,7 @@ public class WordBankCollection implements WordBank {
 
     private ArrayList<Word> hardWordList = new ArrayList<>(); // Hard category words will be stored in this list.
 
-    //Constructors
+
 
 
 
