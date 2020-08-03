@@ -10,8 +10,9 @@ public class Player {
 
     private String name;
     private int cash; // current score
-    private static int currentLives = 1; // player starts with current live
-    private static int maxLives = 3; // Player can get 3 lives
+    private static int currentLives = 3; // player starts with current live
+    private int maxLives = 3;
+
 
     List<String> usedWord = new ArrayList<>(); // List to store all the used word by the player
 
@@ -59,11 +60,22 @@ public class Player {
     }
 
     public void cashOut() {
-
     }
 
     public boolean gameOver() {
-        return true;
+        if (youWin()) {
+        } else if (youLose()) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean youWin() {
+        return usedWord.equals(usedWord);
+    }
+
+    public boolean youLose() {
+        return currentLives >= maxLives;
     }
 
     // ACCESSORY METHOD
@@ -81,5 +93,13 @@ public class Player {
 
     private void setCash(int cash) {
         this.cash = cash;
+    }
+
+    public static int getCurrentLives() {
+        return currentLives;
+    }
+
+    public static void setCurrentLives(int currentLives) {
+        Player.currentLives = currentLives;
     }
 }
