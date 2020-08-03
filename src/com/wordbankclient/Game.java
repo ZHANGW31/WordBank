@@ -12,19 +12,21 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public class Game {
     public static void main(String[] args) {
 
+        Console console = System.console();
         System.out.println("Welcome to the $WordBank$ heist game!");
 
         System.out.println("Guess a word that you think is in the WordBank, starts with following Character");
 
         QuestionFactory questionFactory = new QuestionFactory();
-        Console console = System.console();
+
 
         //console.printf(questionFactory.getRandomQuestion()); // generate random question
 
        // String userInput = console.readLine();
         Word word = new Word(Level.EASY);
         System.out.println(questionFactory.getRandomQuestion());
-        Scanner scanner = new Scanner(System.in);
+
+        console.readLine();
         //String userInput = scanner.nextLine();
 
        // Player player = new Player();

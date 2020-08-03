@@ -7,7 +7,7 @@ public class QuestionFactory {
     // instances
     private char firstLetter;
 
-    private String question= " Word that starts with";
+    private String question= " Word that starts with:";
     private String wordLength;
 
 
@@ -21,10 +21,11 @@ public class QuestionFactory {
         Random random = new Random();
         firstLetter = (char)(random.nextInt(26)+ 'a'); // Generates the random question with starting character a-z
 
-        question = question + firstLetter + " and has" + getRandomNumber(1,3) +" letters";
+        question = question + firstLetter ;
 
         return question;
     }
+
 
     public int getRandomNumber(int min, int max){
         int i;
@@ -72,3 +73,4 @@ public class QuestionFactory {
     }
 
 }
+
