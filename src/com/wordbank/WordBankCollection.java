@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -13,16 +12,16 @@ import java.util.stream.Stream;
 public class WordBankCollection implements WordBank {
 
     //fields and attributes
-    private ArrayList<Word> allWordsList = new ArrayList<>(); //All of the words will be stored in this list.
-
-    private ArrayList<Word> easyWordList = new ArrayList<>(); //Easy category words will be stored in this list.
-
-    private ArrayList<Word> mediumWordList = new ArrayList<>(); // Medium category words will be stored in this list.
-
-    private ArrayList<Word> hardWordList = new ArrayList<>(); // Hard category words will be stored in this list.
-
     private Set<String> allWords = new LinkedHashSet<>();
+    private Set<String> easyWords = new LinkedHashSet<>();
+    private Set<String> mediumWords = new LinkedHashSet<>();
+    private Set<String> hardWords = new LinkedHashSet<>();
 
+    private static final int EASY_WORD_MIN_LENGTH = 1;
+    private static final int EASY_WORD_MAX_LENGTH = 3;
+    private static final int MEDIUM_WORD_MIN_LENGTH = 4;
+    private static final int MEDIUM_WORD_MAX_LENGTH = 6;
+    private static final int HARD_WORD_MIN_LENGTH = 7;
 
 
 
@@ -35,8 +34,7 @@ public class WordBankCollection implements WordBank {
         try(Stream<String> lines = Files.lines(path)) {
             lines.forEach(word -> allWords.add(word));
         } catch (IOException ex) {
-
-
+            System.out.println("An error has occurred reading the data file");
         }
     }
 
@@ -46,6 +44,32 @@ public class WordBankCollection implements WordBank {
 
     //Business Methods
 
+    public Set<String> setEasyWords(Set<String> allWords){
+
+        for (String word : allWords){
+            if (word.length() >= EASY_WORD_MIN_LENGTH && word.length() <= EASY_WORD_MAX_LENGTH){
+                easyWords.add(word);
+            }
+        }
+        return easyWords;
+    }
+
+    public Set<String> setMediumWords() {
+        for (String word : allWords){
+            if (word.length() >= MEDIUM_WORD_MIN_LENGTH && word.length() <= MEDIUM_WORD_MAX_LENGTH){
+                mediumWords.add(word);
+            }
+        }
+        return mediumWords;
+    }
+    public Set<String> setHardWords(){
+        for (String word : allWords){
+            if (word.length() >= HARD_WORD_MIN_LENGTH){
+                hardWords.add(word);
+            }
+        }
+        return hardWords;
+    }
 
     @Override
     public Collection<Word> findByWord(String word) {
