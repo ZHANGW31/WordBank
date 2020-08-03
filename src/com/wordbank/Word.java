@@ -48,7 +48,6 @@ public class Word implements Comparator {
     }
 
 
-
     public Level getLevel() {
 
         return level;
