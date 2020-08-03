@@ -17,7 +17,11 @@ public class Game {
     Console console = System.console();
     WordBankCollection wordBankCollection ;
     public void start() throws IOException {
-        Path file = Paths.get("\\Welcome_Banner.txt");
+
+        /*
+          *can you put the file path, i am not able to do so
+         */
+        Path file = Paths.get("/Users/rajansmac/IdeaProjects/WordBank/Welcome_Banner.txt");
         Files.lines(file).forEach(System.out::println);
 
         System.out.println("Welcome to the $WordBank$ heist game!");
