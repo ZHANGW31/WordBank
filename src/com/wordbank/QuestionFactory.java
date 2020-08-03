@@ -9,11 +9,10 @@ public class QuestionFactory {
     private String question= " What is the word that starts with:";
 
     // method to generate a random question
-
     public String getRandomQuestion(){
 
         Random random = new Random();
-        firstLetter = (char)(random.nextInt(26)+ 'a');
+        firstLetter = (char)(random.nextInt(26)+ 'a'); // Generates the random question with starting character a-z
 
         return question + firstLetter;
     }

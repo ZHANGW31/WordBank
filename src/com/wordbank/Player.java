@@ -39,8 +39,9 @@ public class Player {
 
     }
 
-    public void answerTheQuestion() {
+    public String answerTheQuestion(String answer) {
 
+        return answer;
     }
 
     public void cashOut() {

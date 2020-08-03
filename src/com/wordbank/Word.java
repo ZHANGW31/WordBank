@@ -10,6 +10,13 @@ public class Word implements Comparator {
     // Enum instance
     private Level level = Level.EASY;
 
+    // Constructors
+    public Word(){
+        // no args
+    }
+
+
+
     //Business Method
     public String categorizeWord(){ // Method to determine the word in different category
         String result= "";
