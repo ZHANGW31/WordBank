@@ -7,10 +7,12 @@ public enum Level {
     private String value;
 
     Level(String value){
+
         this.value =value;
     }
 
     public String getValue(){
+
         return value;
     }
 
