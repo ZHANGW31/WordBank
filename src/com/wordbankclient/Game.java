@@ -1,13 +1,9 @@
 package com.wordbankclient;
 
 import com.wordbank.Level;
-import com.wordbank.Player;
 import com.wordbank.QuestionFactory;
-import com.wordbank.Word;
 
 import java.io.Console;
-import java.util.Scanner;
-import java.util.concurrent.CopyOnWriteArraySet;
 
 public class Game {
     public static void main(String[] args) {

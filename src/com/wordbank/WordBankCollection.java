@@ -4,12 +4,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
-public class WordBankCollection implements WordBank {
+public class WordBankCollection {
 
     //fields and attributes
     private Set<String> allWords = new LinkedHashSet<>();
@@ -37,6 +36,10 @@ public class WordBankCollection implements WordBank {
         } catch (IOException ex) {
             System.out.println("An error has occurred reading the data file");
         }
+        setEasyWords();
+        setMediumWords();
+        setHardWords();
+
     }
     //Accessor Methods
 
@@ -44,7 +47,7 @@ public class WordBankCollection implements WordBank {
         return allWords;
     }
 
-    public Set<String> setEasyWords(Set<String> allWords){
+    public Set<String> setEasyWords(){
 
         for (String word : allWords){
             if (word.length() >= EASY_WORD_MIN_LENGTH && word.length() <= EASY_WORD_MAX_LENGTH){
@@ -84,20 +87,7 @@ public class WordBankCollection implements WordBank {
     }
 
     //Business methods
-    @Override
-    public Collection<Word> findByWord(String word) {
-        return null;
-    }
 
-    @Override
-    public Word findByFirstLetter(char letter) {
-        return null;
-    }
-
-    @Override
-    public int lengthOfWord() {
-        return 0;
-    }
 
     //TODO: create a method that removes the word from the list if the user guesses it correctly
 
