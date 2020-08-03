@@ -3,6 +3,7 @@ package com.wordbankclient;
 import com.wordbank.Level;
 import com.wordbank.Player;
 import com.wordbank.QuestionFactory;
+import com.wordbank.Word;
 
 import java.io.Console;
 import java.util.Scanner;
@@ -21,12 +22,13 @@ public class Game {
         //console.printf(questionFactory.getRandomQuestion()); // generate random question
 
        // String userInput = console.readLine();
+        Word word = new Word(Level.EASY);
         System.out.println(questionFactory.getRandomQuestion());
         Scanner scanner = new Scanner(System.in);
-        String userInput = scanner.nextLine();
+        //String userInput = scanner.nextLine();
 
-        Player player = new Player();
-        String playerInput = player.answerTheQuestion(scanner.nextLine()); // allows player to input word
+       // Player player = new Player();
+        //String playerInput = player.answerTheQuestion(scanner.nextLine()); // allows player to input word
 
         // TODO: for certain level, if player answer is correct, player cashbalance will be added
         /*if((level.getValue()) && playerInput.length()<=3 ){

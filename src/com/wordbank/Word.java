@@ -15,6 +15,10 @@ public class Word implements Comparator {
         // no args
     }
 
+    public Word(Level level){
+        setLevel(level);
+    }
+
 
 
     //Business Method
