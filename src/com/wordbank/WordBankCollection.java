@@ -91,6 +91,11 @@ public class WordBankCollection {
 
     //TODO: create a method that removes the word from the list if the user guesses it correctly
 
+    public void removeWord(String input, Set<String> wordLinkedHashSet) {
+        wordLinkedHashSet.remove(input);
+    }
+
+
 
 
 
