@@ -55,12 +55,15 @@ public class Player {
     }
 
     public String answerTheQuestion(String answer) {
-
         return answer;
     }
 
     public void cashOut() {
 
+    }
+
+    public boolean gameOver() {
+        return true;
     }
 
     // ACCESSORY METHOD

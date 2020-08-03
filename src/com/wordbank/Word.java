@@ -6,6 +6,7 @@ import java.util.List;
 public class Word implements Comparator {
     // instance- variables, fields and attributes
     private  int lengthOfWords; // number of characters of words
+    public static final long TIME_LIMIT = 10000L; // 10 SECONDS is allocate to the player.
 
     // Enum instance
     private Level level = Level.EASY;
