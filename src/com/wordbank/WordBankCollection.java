@@ -23,9 +23,6 @@ public class WordBankCollection implements WordBank {
     private static final int MEDIUM_WORD_MAX_LENGTH = 6;
     private static final int HARD_WORD_MIN_LENGTH = 7;
 
-
-
-
     public WordBankCollection() throws IOException {
 
         //This constructor upon creation, sets the path to the data file, in this case is the WordBank.txt.
@@ -46,8 +43,6 @@ public class WordBankCollection implements WordBank {
     public Set<String> getAllWords() {
         return allWords;
     }
-
-    //Business Methods
 
     public Set<String> setEasyWords(Set<String> allWords){
 
@@ -88,6 +83,7 @@ public class WordBankCollection implements WordBank {
         return hardWords;
     }
 
+    //Business methods
     @Override
     public Collection<Word> findByWord(String word) {
         return null;
@@ -102,6 +98,8 @@ public class WordBankCollection implements WordBank {
     public int lengthOfWord() {
         return 0;
     }
+
+    //TODO: create a method that removes the word from the list if the user guesses it correctly
 
 
 
