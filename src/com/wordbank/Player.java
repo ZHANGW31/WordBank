@@ -2,6 +2,7 @@ package com.wordbank;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Player {
@@ -10,7 +11,7 @@ public class Player {
 
     private String name;
     private int cash; // current score
-    private static int currentLives = 3; // player starts with current live
+    private int currentLives = 3; // player starts with current live
     private int maxLives = 3;
 
 
@@ -31,6 +32,10 @@ public class Player {
         setCash(cash);
     }
 
+    public Player(String name, int cash, int currentLives) {
+        this(name, cash);
+        setCurrentLives(currentLives);
+    }
 
     // BUSINESS METHOD
 
@@ -55,27 +60,16 @@ public class Player {
 //    }
     }
 
-    public String answerTheQuestion(String answer) {
-        return answer;
+    public String answerTheQuestion() {
+       Random rand = new Random();
+       return null;
+    }
+
+    public boolean isAnsweredAlready (char answer) {
+        return true; //previousAnswer.contains(answer);
     }
 
     public void cashOut() {
-    }
-
-    public boolean gameOver() {
-        if (youWin()) {
-        } else if (youLose()) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean youWin() {
-        return usedWord.equals(usedWord);
-    }
-
-    public boolean youLose() {
-        return currentLives >= maxLives;
     }
 
     // ACCESSORY METHOD
@@ -95,11 +89,11 @@ public class Player {
         this.cash = cash;
     }
 
-    public static int getCurrentLives() {
+    public int getCurrentLives() {
         return currentLives;
     }
 
-    public static void setCurrentLives(int currentLives) {
-        Player.currentLives = currentLives;
+    public void setCurrentLives(int currentLives) {
+        this.currentLives = currentLives;
     }
 }

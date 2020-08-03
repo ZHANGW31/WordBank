@@ -1,4 +1,4 @@
-package com.wordbankclient;
+package com.wordbank.client;
 
 import com.wordbank.Level;
 import com.wordbank.QuestionFactory;
