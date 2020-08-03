@@ -11,7 +11,7 @@ public class Game {
 
         System.out.println("Welcome to the $WordBank$ heist game!");
 
-        System.out.println("Guess a word that you think is in the WordBank starts with following Character");
+        System.out.println("Guess a word that you think is in the WordBank, starts with following Character");
 
         QuestionFactory questionFactory = new QuestionFactory();
         Console console = System.console();
