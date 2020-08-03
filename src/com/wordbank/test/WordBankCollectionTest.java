@@ -10,9 +10,6 @@ public class WordBankCollectionTest {
 
     public static void main(String[] args) throws IOException {
         WordBankCollection wordBank = new WordBankCollection();
-
-
-
     }
 
 }
