@@ -35,28 +35,13 @@ public class Game {
     }
 
 
+    // Main method
     public static void main(String[] args) {
 
         Game game = new Game();
         game.start();
         game.correctAnswer();
 
-
-
-
-
-
-
-
-        //String userInput = scanner.nextLine();
-
-       // Player player = new Player();
-        //String playerInput = player.answerTheQuestion(scanner.nextLine()); // allows player to input word
-
-        // TODO: for certain level, if player answer is correct, player cashbalance will be added
-        /*if((level.getValue()) && playerInput.length()<=3 ){
-            player.cashOut();
-        }*/
 
 
     }
