@@ -1,5 +1,6 @@
 package com.wordbank;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -13,6 +14,10 @@ public class WordBankCollection implements WordBank {
     private ArrayList<Word> mediumWordList = new ArrayList<>(); // Medium category words will be stored in this list.
 
     private ArrayList<Word> hardWordList = new ArrayList<>(); // Hard category words will be stored in this list.
+
+    public WordBankCollection() {
+
+    }
 
 
 
