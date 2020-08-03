@@ -2,6 +2,7 @@ package com.wordbank;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Player {
 
@@ -9,7 +10,8 @@ public class Player {
 
     private String name;
     private int cash; // current score
-    private int lives; // current lives count
+    private static int currentLives = 1; // player starts with current live
+    private static int maxLives = 3; // Player can get 3 lives
 
     List<String> word = new ArrayList<>();
 
@@ -23,20 +25,33 @@ public class Player {
         setName(name);
     }
 
-    public Player (String name, int cash) {
+    public Player(String name, int cash) {
         this(name);
         setCash(cash);
     }
 
-    public Player (String name, int cash, int lives) {
-        this(name,cash);
-        setLives(lives);
-    }
 
     // BUSINESS METHOD
 
     public void startGame() {
-
+//        int numberOfGuesses = 0;
+//        String original = selectRandomWord();
+//        String shuffled = getShuffledWord(original);
+//        boolean gameOn = true;
+//        while(gameOn) {
+//            numberOfGuesses++;
+//            String playerGuess = getUserGuess();
+//            if(original.equalsIgnoreCase(playerGuess)) {
+//                System.out.println("Congratulations! You found the word in " + numberOfGuesses +" guesses");
+//                gameOn = false;
+//            }
+//            else {
+//                System.out.println("Sorry, Wrong answer");
+//            }
+//
+//        }
+//
+//    }
     }
 
     public void answerTheQuestion() {
@@ -47,28 +62,20 @@ public class Player {
 
     }
 
-    // ACCESSORIES METHOD
-    public String getName() {
+    // ACCESSORY METHOD
+    private String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    private void setName(String name) {
         this.name = name;
     }
 
-    public int getCash() {
+    private int getCash() {
         return cash;
     }
 
-    public void setCash(int cash) {
+    private void setCash(int cash) {
         this.cash = cash;
-    }
-
-    public int getLives() {
-        return lives;
-    }
-
-    public void setLives(int lives) {
-        this.lives = lives;
     }
 }

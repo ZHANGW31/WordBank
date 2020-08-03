@@ -22,6 +22,7 @@ public class Word {
         return result;
     }
 
+
     // Accessor method fro private fields
     public int getLengthOfWords() {
         return lengthOfWords;
