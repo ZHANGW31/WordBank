@@ -35,13 +35,7 @@ public class QuestionFactory {
 
     //TODO:
     public void setQuestion(String question) {
-        if(lvl.equals(level.EASY) ){
-            question = getRandomQuestion() + "."+ "The word Contains " + getRandomNumber(1,3) +" letters";
-        } else if(lvl.equals(level.MEDIUM)){
-            question = getRandomQuestion()+ "."+ "The word Contains " + getRandomNumber(4,6)+ " letters";
-        }else if (lvl.equals(level.HARD)){
-            question = getRandomQuestion()+ "."+ " The word Contains" + getRandomNumber(7,15)+ " letters";
-        }
+
         this.question = question;
     }
 
