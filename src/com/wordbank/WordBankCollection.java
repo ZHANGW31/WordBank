@@ -27,6 +27,10 @@ public class WordBankCollection implements WordBank {
 
 
     public WordBankCollection() throws IOException {
+
+        //This constructor upon creation, sets the path to the data file, in this case is the WordBank.txt.
+        //Then using Stream and Files.lines methods, parses the text document and adds each word line by line into a LinkedHashSet.
+
         Path path = Paths.get("C:\\Users\\Public\\Documents\\WordBank.txt");
 
         Files.lines(path).forEach(System.out::println);
@@ -37,6 +41,7 @@ public class WordBankCollection implements WordBank {
             System.out.println("An error has occurred reading the data file");
         }
     }
+    //Accessor Methods
 
     public Set<String> getAllWords() {
         return allWords;
@@ -68,6 +73,18 @@ public class WordBankCollection implements WordBank {
                 hardWords.add(word);
             }
         }
+        return hardWords;
+    }
+
+    public Set<String> getEasyWords() {
+        return easyWords;
+    }
+
+    public Set<String> getMediumWords() {
+        return mediumWords;
+    }
+
+    public Set<String> getHardWords() {
         return hardWords;
     }
 
