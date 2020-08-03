@@ -6,7 +6,11 @@ public class QuestionFactory {
 
     // instances
     private char firstLetter;
-    private String question= " What is the word that starts with:";
+
+    private String question;
+    private Level level;
+
+    private String lvl;
 
     // method to generate a random question
     public String getRandomQuestion(){
@@ -14,6 +18,32 @@ public class QuestionFactory {
         Random random = new Random();
         firstLetter = (char)(random.nextInt(26)+ 'a'); // Generates the random question with starting character a-z
 
-        return question + firstLetter;
+        return question+ firstLetter;
     }
+
+    public int getRandomNumber(int min, int max){
+        int i;
+
+        Random random = new Random();
+        for (i=0;i<15; i++){}
+        int randomNumber = (int) (Math.random() + 1);
+        return randomNumber;
+    }
+    public String getQuestion() {
+        return question;
+    }
+
+    //TODO:
+    public void setQuestion(String question) {
+        if(lvl.equals(level.EASY) ){
+            question = getRandomQuestion() + "."+ "The word Contains " + getRandomNumber(1,3) +" letters";
+        } else if(lvl.equals(level.MEDIUM)){
+            question = getRandomQuestion()+ "."+ "The word Contains " + getRandomNumber(4,6)+ " letters";
+        }else if (lvl.equals(level.HARD)){
+            question = getRandomQuestion()+ "."+ " The word Contains" + getRandomNumber(7,15)+ " letters";
+        }
+        this.question = question;
+    }
+
+
 }
