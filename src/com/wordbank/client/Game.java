@@ -26,7 +26,7 @@ public class Game {
     }
 
     public void correctAnswer(){
-        if(console.readLine().equals(wordBankCollection.getAllWords())){
+        if(wordBankCollection.setEasyWords().contains(console.readLine())){
             console.printf("Correct Answer, You have own"+ console.readLine().length()*100 +"dollars");
         } else{
             console.printf("Try again");
