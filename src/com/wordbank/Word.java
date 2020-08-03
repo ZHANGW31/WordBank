@@ -1,11 +1,10 @@
 package com.wordbank;
 
 import java.util.Comparator;
-import java.util.List;
 
 public class Word implements Comparator {
     // instance- variables, fields and attributes
-    private  int lengthOfWords; // number of characters of words
+    private  int lengthOfWord; // number of characters of words
 
 
     // Enum instance
@@ -21,11 +20,11 @@ public class Word implements Comparator {
     //Business Method
     public String categorizeWord(){ // Method to determine the word in different category
         String result= "";
-        if(lengthOfWords<=3){
+        if(lengthOfWord <=3){
             result = level.EASY.getValue();
-        } else if(lengthOfWords>3 && lengthOfWords<=6){
+        } else if(lengthOfWord >3 && lengthOfWord <=6){
             result = level.MEDIUM.getValue();
-        }else if(lengthOfWords>6){
+        }else if(lengthOfWord >6){
             result = level.HARD.getValue();
         }
 
@@ -34,14 +33,14 @@ public class Word implements Comparator {
 
 
     // Accessor method fro private fields
-    public int getLengthOfWords() {
+    public int getLengthOfWord() {
 
-        return lengthOfWords;
+        return lengthOfWord;
     }
 
-    public void setLengthOfWords(int lengthOfWords) {
+    public void setLengthOfWord(int lengthOfWord) {
 
-        this.lengthOfWords = lengthOfWords;
+        this.lengthOfWord = lengthOfWord;
     }
 
 
