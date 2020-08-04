@@ -1,6 +1,8 @@
 package com.wordbank;
 
+import java.util.LinkedHashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class QuestionFactory {
 
@@ -35,6 +37,22 @@ public class QuestionFactory {
 
 
         return randomNumber;
+    }
+
+    public Set<String> validGeneratedQuestion(int length, char firstCharacter, Set<String> inputSet){
+
+        int counter = 0;
+        Set<String> resultSet = new LinkedHashSet<>();
+
+        for (String word: inputSet) {
+            if (word.charAt(0) == firstCharacter && word.length() == length){
+                counter++;
+                resultSet.add(word);
+
+            }
+        }
+        System.out.println("There are " + counter + " possible words.");
+        return resultSet;
     }
 
 
