@@ -52,28 +52,31 @@ public class Game {
         String userInput= " ";
         System.out.println("Enter Level. Levels are Easy, Medium and Hard");
         lvl= scanner.nextLine().toUpperCase();
+        int randomNumberStore;
 
         if(lvl.equals(level.EASY.getValue())) {
-
+                //int temp = questionFactory.getRandomNumber(2,3);
                 System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
-                        questionFactory.getRandomNumber(2, 3) + " character");
+                        questionFactory.getRandomNumber(2,3) + " character");
                 userInput = scanner.nextLine().toLowerCase();
+                int cashEarning = player.cashEarned(userInput);
 
-
-                if (wordBankCollection.getEasyWords().contains(userInput)) {
+                if ((wordBankCollection.getEasyWords().contains(userInput))&& (userInput.length()==
+                        questionFactory.getRandomNumber(2,3))) {
                     System.out.println(prompter.rightAnswerMessage());
-                    int cashEarning = player.cashEarned(userInput);
+
                     System.out.println(prompter.rightAnswerCashAmount((cashEarning)));
-                    balance = cashEarning;
+
                 } else {
                     System.out.println(prompter.wrongAnswerMessage());
                     userInput = scanner.nextLine().toLowerCase();
-                    if (wordBankCollection.getEasyWords().contains(userInput)) {
+                    if ((wordBankCollection.getEasyWords().contains(userInput))&& (userInput.length()==questionFactory.getRandomNumber(2,3))) {
                         System.out.println(prompter.rightAnswerMessage());
-                        System.out.println(prompter.rightAnswerCashAmount(player.cashEarned(userInput)));
+                        System.out.println(prompter.rightAnswerCashAmount(cashEarning));
                     } else {
                         System.out.println(prompter.endOfTryMessage());
                     }
+                    balance = cashEarning;
                 }
 
         } else if(lvl.equals(level.MEDIUM.getValue())) {

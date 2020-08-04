@@ -51,26 +51,7 @@ public class QuestionFactory {
         return level;
     }
 
-    public void setLevel(Level level) {
-        switch (level){
-            case EASY:
-                if(wordLength.length()<=3){
-                    this.level=level.EASY;
-                }
-            case HARD:
-                if(wordLength.length()>=4 && wordLength.length()<=6){
-                    this.level =level.MEDIUM;
 
-                }
-            case MEDIUM:
-                if(wordLength.length()>=7){
-                    this.level = level.HARD;
-                }
-            default:
-                break;
-        }
-        this.level = level;
-    }
 
 }
 
