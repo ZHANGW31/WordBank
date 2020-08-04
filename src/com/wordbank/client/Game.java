@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.Console;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class Game {
@@ -37,51 +38,53 @@ public class Game {
     }
 
 
-    public void askQuestion (){
+    public void askQuestion (String lvl){
         int i =0;
-        switch (level) {
-            case EASY:
-                // TODO
-                try{
-                    for ( i = 1; i <= 5; i++) {
-                        System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
+        Scanner scanner = new Scanner(System.in);
+        String userInput= " ";
+        System.out.println("Enter Level. Levels are Easy, Medium and Hard");
+        lvl= scanner.nextLine();
+        if(lvl.equals(level.EASY.getValue()))
+
+            System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
                                 questionFactory.getRandomNumber(1, 3) + "character");
+            userInput = scanner.nextLine();
 
-                    }
-                }catch (NullPointerException e){
-                    e.getMessage();
-                }
+            correctAnswer(userInput);
 
-            case MEDIUM:
-                for(i=1;i<=5;i++){
-                    System.out.println(questionFactory.getRandomQuestion()+ ". The word has" +
-                            questionFactory.getRandomNumber(4,6)+ " character");
-                }
-            case HARD:
-                for (i=1; i<=5; i++){
-                    System.out.println(questionFactory.getRandomQuestion()+ ". The word has"+
-                            questionFactory.getRandomNumber(7,50)+ "character");
-                }
+        if(lvl.equals(level.MEDIUM.getValue())) {
+
+
+                    System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
+                            questionFactory.getRandomNumber(4, 6) + " character");
+
         }
+        if(lvl.equals(level.HARD.getValue())) {
+
+                System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
+                        questionFactory.getRandomNumber(7, 50) + "character");
+
+        }
+
     }
 
-    public void correctAnswer(){
-       String userInput= console.readLine();
+    public void correctAnswer(String userInput){
+        userInput= console.readLine();
        switch (level) {
            case EASY:
-           if (wordBankCollection.setEasyWords().contains(console.readLine())) {
+           if (wordBankCollection.setEasyWords().contains(userInput)) {
                console.printf("Correct Answer!");
            } else {
                console.printf("Try again");
            }
            case MEDIUM:
-               if(wordBankCollection.setMediumWords().contains(console.readLine())){
+               if(wordBankCollection.setMediumWords().contains(userInput)){
                    console.printf("Correct Answer!");
                }else{
                    console.printf("Try again");
                }
            case HARD:
-               if(wordBankCollection.setHardWords().contains(console.readLine())){
+               if(wordBankCollection.setHardWords().contains(userInput)){
                    console.printf("Correct Answer!");
 
                } else{
@@ -110,8 +113,8 @@ public class Game {
 
         Game game = new Game();
         game.start();
-        game.askQuestion();
-        game.correctAnswer();
+        game.askQuestion(Level.EASY.getValue());
+
 
 
 

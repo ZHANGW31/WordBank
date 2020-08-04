@@ -27,7 +27,7 @@ public class WordBankCollection {
         //This constructor upon creation, sets the path to the data file, in this case is the WordBank.txt.
         //Then using Stream and Files.lines methods, parses the text document and adds each word line by line into a LinkedHashSet.
 
-        Path path = Paths.get("C:\\Users\\Public\\Documents\\WordBank.txt");
+        Path path = Paths.get("WordBank.txt");
 
         Files.lines(path).forEach(System.out::println);
 
