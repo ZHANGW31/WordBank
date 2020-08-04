@@ -12,9 +12,14 @@ import java.util.stream.Stream;
 public class Game {
     QuestionFactory questionFactory = new QuestionFactory();
     Console console = System.console();
-    WordBankCollection wordBankCollection ;
-    public void start() throws IOException {
+    WordBankCollection wordBankCollection;
 
+
+
+
+
+
+    public void start() throws IOException {
         /*
           *can you put the file path, i am not able to do so
          */
@@ -24,6 +29,7 @@ public class Game {
         /*String banner = Files.readString(Path.of("data", "Welcome_Banner.txt"));
         Files.lines(Path.of("data","Welcome_Banner.txt")).forEach(line -> System.out.println(line));*/
 
+        //This block of code reads and printlns out the Welcome_Banner.txt file.
         try (BufferedReader reader = new BufferedReader(new FileReader("Welcome_Banner.txt"))) {
             Stream<String> line = reader.lines();
             line.forEach(System.out::println);
