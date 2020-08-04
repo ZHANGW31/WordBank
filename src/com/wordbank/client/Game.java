@@ -1,6 +1,7 @@
 package com.wordbank.client;
 
 import com.wordbank.Level;
+import com.wordbank.Player;
 import com.wordbank.QuestionFactory;
 import com.wordbank.WordBankCollection;
 
@@ -12,10 +13,13 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class Game {
+
     QuestionFactory questionFactory = new QuestionFactory();
     Console console = System.console();
     WordBankCollection wordBankCollection;
     private Level level;
+
+
 
 
 
@@ -117,7 +121,11 @@ public class Game {
 
 
 
-
+        Scanner myScan = new Scanner(System.in);
+        Player p1 = new  Player();
+        System.out.println("P1 set your name: ");
+        String p1Name = myScan.nextLine();
+        p1.setName(p1Name);
 
     }
 

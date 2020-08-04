@@ -2,7 +2,6 @@ package com.wordbank;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Player {
@@ -13,6 +12,11 @@ public class Player {
     private int cash; // current score
     private int currentLives = 3; // player starts with current live
     private int maxLives = 3;
+    private static int easyPrize = 100;
+    private static int mediumPrize = 200;
+    private static int hardPrize = 300;
+
+
 
 
     List<String> usedWord = new ArrayList<>(); // List to store all the used word by the player
@@ -60,16 +64,46 @@ public class Player {
 //    }
     }
 
-    public String answerTheQuestion() {
-       Random rand = new Random();
-       return null;
+    public String answerTheQuestion(String answer) {
+       return answer;
     }
 
     public boolean isAnsweredAlready (char answer) {
         return true; //previousAnswer.contains(answer);
     }
 
-    public void cashOut() {
+    public static int calculateScore(String [] words) {
+        int sum = 0;
+        int count = 0;
+        for (String word : words) {
+            count++;
+            if(contains(easyWords, word)) {
+                int thisScore = word.length() * easyPrize;
+                sum = sum + thisScore;
+            }
+            else if(contains(mediumWords, word)) {
+                int thisScore = word.length() * mediumPrize;
+                sum = sum + thisScore;
+            }
+            else if(contains(hardWords, word)) {
+                int thisScore = word.length() * hardPrize;
+                sum = sum + thisScore;
+            }
+        }
+        return sum;
+    }
+
+    public static boolean contains( String [] words, String word) {
+        for(String inWord : words) {
+            if(word == inWord) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean cashOut() {
+        return true;
     }
 
     // ACCESSORY METHOD
@@ -77,7 +111,7 @@ public class Player {
         return name;
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
