@@ -93,7 +93,7 @@ public class Game {
         } else if(lvl.equals(level.HARD.getValue())) {
 
             System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
-                        questionFactory.getRandomNumber(7, 50) + "character");
+                        questionFactory.getRandomNumber(7, 20) + "character");
             userInput = scanner.nextLine();
             if(wordBankCollection.setHardWords().contains(userInput)){
                 System.out.println();
