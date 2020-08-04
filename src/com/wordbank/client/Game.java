@@ -1,15 +1,10 @@
 package com.wordbank.client;
 
 import com.wordbank.*;
-import org.w3c.dom.ls.LSOutput;
-
 import java.io.BufferedReader;
-import java.io.Console;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.stream.Stream;
 
 
@@ -17,7 +12,7 @@ import java.util.stream.Stream;
 public class Game {
 
     QuestionFactory questionFactory = new QuestionFactory(); //
-    Console console = System.console();
+
     WordBankCollection wordBankCollection = new WordBankCollection();// instance of wordBankCollection
     private Level level; // instance of Level enum
     //Player player = new Player(); // creating new instance of player
@@ -141,16 +136,6 @@ public class Game {
         Game game = new Game();
         game.start();
         game.askQuestion(Level.EASY.getValue());
-
-
-
-        /*Scanner myScan = new Scanner(System.in);
-        Player p1 = new  Player();
-        System.out.println("P1 set your name: ");
-        String p1Name = myScan.nextLine();
-        p1.setName(p1Name);
-
-         */
 
     }
 
