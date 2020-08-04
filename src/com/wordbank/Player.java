@@ -43,17 +43,24 @@ public class Player {
     }
 
     // BUSINESS METHOD
-    public int cashBalance(String inputWord){
-        int cashOutBalance=0;
+    public int cashEarned(String inputWord){
+        int cash=0;
         switch (level){
             case EASY:
-                cashOutBalance = inputWord.length()*100;
+                cash = inputWord.length()*100;
             case MEDIUM:
-                cashOutBalance = inputWord.length()*250;
+                cash = inputWord.length()*250;
             case HARD:
-                cashOutBalance = inputWord.length()*500;
+                cash = inputWord.length()*500;
         }
-        return cashOutBalance;
+        return cash;
+    }
+
+    public int cashStolen(){
+        int balance=0;
+        int sum=0;
+        sum += balance;
+        return sum;
     }
 
 

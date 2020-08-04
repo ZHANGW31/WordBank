@@ -47,7 +47,7 @@ public class Game {
 
 
     public void askQuestion (String lvl){
-        int i =0;
+        int balance =0;
         Scanner scanner = new Scanner(System.in);
         String userInput= " ";
         System.out.println("Enter Level. Levels are Easy, Medium and Hard");
@@ -58,15 +58,19 @@ public class Game {
                 System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
                         questionFactory.getRandomNumber(2, 3) + " character");
                 userInput = scanner.nextLine().toLowerCase();
-            //Collection<String> easyWords = wordBankCollection.getEasyWords();
+
 
                 if (wordBankCollection.getEasyWords().contains(userInput)) {
                     System.out.println(prompter.rightAnswerMessage());
+                    int cashEarning = player.cashEarned(userInput);
+                    System.out.println(prompter.rightAnswerCashAmount((cashEarning)));
+                    balance = cashEarning;
                 } else {
                     System.out.println(prompter.wrongAnswerMessage());
                     userInput = scanner.nextLine().toLowerCase();
                     if (wordBankCollection.getEasyWords().contains(userInput)) {
                         System.out.println(prompter.rightAnswerMessage());
+                        System.out.println(prompter.rightAnswerCashAmount(player.cashEarned(userInput)));
                     } else {
                         System.out.println(prompter.endOfTryMessage());
                     }
@@ -80,11 +84,13 @@ public class Game {
             userInput= scanner.nextLine().toLowerCase();
             if(wordBankCollection.getMediumWords().contains(userInput)){
                 System.out.println(prompter.rightAnswerMessage());
+                System.out.println(prompter.rightAnswerCashAmount(player.cashEarned(userInput)));
             }else {
                 System.out.println(prompter.wrongAnswerMessage());
                 userInput= scanner.nextLine().toLowerCase();
                 if(wordBankCollection.getMediumWords().contains(userInput)){
                     System.out.println(prompter.rightAnswerMessage());
+                    System.out.println(prompter.rightAnswerCashAmount(player.cashEarned(userInput)));
                 }else {
                     System.out.println(prompter.endOfTryMessage());
                 }
@@ -97,12 +103,14 @@ public class Game {
                         questionFactory.getRandomNumber(7, 20) + "character");
             userInput = scanner.nextLine().toLowerCase();
             if(wordBankCollection.getHardWords().contains(userInput)){
-                System.out.println();
+                System.out.println(prompter.rightAnswerMessage());
+                System.out.println(prompter.rightAnswerCashAmount(player.cashEarned(userInput)));
             }else{
                 System.out.println(prompter.wrongAnswerMessage());
                 userInput =scanner.nextLine().toLowerCase();
                 if(wordBankCollection.getHardWords().contains(userInput)){
                     System.out.println(prompter.rightAnswerMessage());
+                    System.out.println(prompter.rightAnswerCashAmount(player.cashEarned(userInput)));
                 }else{
                     System.out.println(prompter.endOfTryMessage());
                 }
