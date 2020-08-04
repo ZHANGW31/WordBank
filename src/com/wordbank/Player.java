@@ -72,8 +72,34 @@ public class Player {
         return true; //previousAnswer.contains(answer);
     }
 
-    public boolean calculateScore() {
-        return true;
+    public static int calculateScore(String [] words) {
+        int sum = 0;
+        int count = 0;
+        for (String word : words) {
+            count++;
+            if(contains(easyWords, word)) {
+                int thisScore = word.length() * easyPrize;
+                sum = sum + thisScore;
+            }
+            else if(contains(mediumWords, word)) {
+                int thisScore = word.length() * mediumPrize;
+                sum = sum + thisScore;
+            }
+            else if(contains(hardWords, word)) {
+                int thisScore = word.length() * hardPrize;
+                sum = sum + thisScore;
+            }
+        }
+        return sum;
+    }
+
+    public static boolean contains( String [] words, String word) {
+        for(String inWord : words) {
+            if(word == inWord) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean cashOut() {
@@ -81,7 +107,7 @@ public class Player {
     }
 
     // ACCESSORY METHOD
-    public String getName() {
+    private String getName() {
         return name;
     }
 
@@ -89,11 +115,11 @@ public class Player {
         this.name = name;
     }
 
-    public int getCash() {
+    private int getCash() {
         return cash;
     }
 
-    public void setCash(int cash) {
+    private void setCash(int cash) {
         this.cash = cash;
     }
 
