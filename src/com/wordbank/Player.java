@@ -70,15 +70,6 @@ public class Player {
       return true;
     }
 
-    public static boolean contains( String [] words, String word) {
-        for(String inWord : words) {
-            if(word == inWord) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public boolean cashOut() {
         return true;
     }
