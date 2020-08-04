@@ -31,11 +31,13 @@ public class QuestionFactory {
         int i;
 
         Random random = new Random();
-        int randomNumber = (int) (Math.random() + 2);
+        int randomNumber =  random.nextInt((max-min)+1)+min;
 
 
         return randomNumber;
     }
+
+
     public String getQuestion() {
         return question;
     }
