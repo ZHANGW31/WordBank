@@ -82,22 +82,22 @@ public class Game {
        switch (level) {
            case EASY:
            if (wordBankCollection.setEasyWords().contains(userInput)) {
-               console.printf("Correct Answer!");
+               System.out.println(prompter.rightAnswerMessage());
            } else {
-               console.printf("Try again");
+               System.out.println(prompter.wrongAnswerMessage());;
            }
            case MEDIUM:
                if(wordBankCollection.setMediumWords().contains(userInput)){
-                   console.printf("Correct Answer!");
+                   System.out.println(prompter.rightAnswerMessage());;
                }else{
-                   console.printf("Try again");
+                   System.out.println(prompter.wrongAnswerMessage());
                }
            case HARD:
                if(wordBankCollection.setHardWords().contains(userInput)){
-                   console.printf("Correct Answer!");
+                   System.out.println(prompter.rightAnswerMessage());
 
                } else{
-                   console.printf("Try again");
+                   System.out.println(prompter.wrongAnswerMessage());
                }
        }
     }
