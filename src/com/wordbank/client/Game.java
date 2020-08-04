@@ -1,9 +1,6 @@
 package com.wordbank.client;
 
-import com.wordbank.Level;
-import com.wordbank.Player;
-import com.wordbank.QuestionFactory;
-import com.wordbank.WordBankCollection;
+import com.wordbank.*;
 
 import java.io.BufferedReader;
 import java.io.Console;
@@ -14,12 +11,13 @@ import java.util.stream.Stream;
 
 public class Game {
 
-    QuestionFactory questionFactory = new QuestionFactory();
+    QuestionFactory questionFactory = new QuestionFactory(); //
     Console console = System.console();
-    WordBankCollection wordBankCollection;
-    private Level level;
-
-
+    WordBankCollection wordBankCollection; // instance of wordBankCollection
+    private Level level; // instance of Level enum
+    Player player = new Player(); // creating new instance of player
+    Prompter prompter = new Prompter();
+    Scanner scanner = new Scanner(System.in);
 
 
 
@@ -34,9 +32,11 @@ public class Game {
             e.printStackTrace();
         }
 
-        System.out.println("Welcome to the $WordBank$ heist game!");
+        System.out.println(prompter.nameMessage());
+        String name = scanner.nextLine();
 
-        System.out.println("Guess a word that you think is in the WordBank, starts with following Character");
+        System.out.println(prompter.welcomeMessage()+name);
+
 
 
     }
@@ -48,32 +48,32 @@ public class Game {
         String userInput= " ";
         System.out.println("Enter Level. Levels are Easy, Medium and Hard");
         lvl= scanner.nextLine();
-        if(lvl.equals(level.EASY.getValue()))
+        if(lvl.equals(level.EASY.getValue())) {
 
             System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
-                                questionFactory.getRandomNumber(1, 3) + "character");
+                    questionFactory.getRandomNumber(2, 3) + " character");
             userInput = scanner.nextLine();
 
             correctAnswer(userInput);
-
-        if(lvl.equals(level.MEDIUM.getValue())) {
+        } else if(lvl.equals(level.MEDIUM.getValue())) {
 
 
                     System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
                             questionFactory.getRandomNumber(4, 6) + " character");
+                    userInput= scanner.nextLine();
 
-        }
-        if(lvl.equals(level.HARD.getValue())) {
+        } else if(lvl.equals(level.HARD.getValue())) {
 
                 System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
                         questionFactory.getRandomNumber(7, 50) + "character");
+                userInput = scanner.nextLine();
 
         }
 
     }
 
     public void correctAnswer(String userInput){
-        userInput= console.readLine();
+        userInput= scanner.nextLine();
        switch (level) {
            case EASY:
            if (wordBankCollection.setEasyWords().contains(userInput)) {

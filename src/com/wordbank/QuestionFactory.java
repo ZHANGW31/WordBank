@@ -31,7 +31,7 @@ public class QuestionFactory {
         int i;
 
         Random random = new Random();
-        int randomNumber = (int) (Math.random() + 1);
+        int randomNumber = (int) (Math.random() + 2);
 
 
         return randomNumber;
