@@ -16,6 +16,12 @@ public class WordBankCollectionTest {
         System.out.println("Total number of words: " + wordBank.getAllWords().size());
         System.out.println(wordBank.longestLengthWordInSet(wordBank.getHardWords()));
 
+
+
+
+//        System.out.println(wordBank.validGeneratedQuestion(2,'x',wordBank.getEasyWords()));
+
+
         /*Game game = new Game();
         game.start();
         game.askQuestion(Level.EASY.getValue());
