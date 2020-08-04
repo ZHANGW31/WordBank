@@ -3,14 +3,11 @@ package com.wordbank.client;
 import com.wordbank.QuestionFactory;
 import com.wordbank.WordBankCollection;
 
-
+import java.io.BufferedReader;
 import java.io.Console;
-import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class Game {
     QuestionFactory questionFactory = new QuestionFactory();
@@ -21,8 +18,18 @@ public class Game {
         /*
           *can you put the file path, i am not able to do so
          */
-        Path file = Paths.get("/Users/rajansmac/IdeaProjects/WordBank/Welcome_Banner.txt");
-        Files.lines(file).forEach(System.out::println);
+        /*Path file = Paths.get("/IdeaProjects/WordBank/data/Welcome_Banner.txt");
+        Files.lines(file).forEach(System.out::println);*/
+
+        /*String banner = Files.readString(Path.of("data", "Welcome_Banner.txt"));
+        Files.lines(Path.of("data","Welcome_Banner.txt")).forEach(line -> System.out.println(line));*/
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("Welcome_Banner.txt"))) {
+            Stream<String> line = reader.lines();
+            line.forEach(System.out::println);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         System.out.println("Welcome to the $WordBank$ heist game!");
 
