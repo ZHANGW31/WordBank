@@ -15,7 +15,8 @@ public class Game {
 
     WordBankCollection wordBankCollection = new WordBankCollection();// instance of wordBankCollection
     private Level level; // instance of Level enum
-    //Player player = new Player(); // creating new instance of player
+    Player player = new Player(); // creating new instance of player
+
     Prompter prompter = new Prompter();
     Scanner scanner = new Scanner(System.in);
 
@@ -39,6 +40,7 @@ public class Game {
 
         System.out.println(prompter.nameMessage());
         String name = scanner.nextLine();
+        player.setName(name);
 
         System.out.println(prompter.welcomeMessage()+name);
 
@@ -112,8 +114,6 @@ public class Game {
         }
 
     }
-
-
 
     public int cashBalance(String inputWord){
         int cashOutBalance=0;
