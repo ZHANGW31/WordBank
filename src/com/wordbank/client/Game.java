@@ -1,6 +1,7 @@
 package com.wordbank.client;
 
 import com.wordbank.*;
+import org.w3c.dom.ls.LSOutput;
 
 import java.io.BufferedReader;
 import java.io.Console;
@@ -17,7 +18,7 @@ public class Game {
     Console console = System.console();
     WordBankCollection wordBankCollection; // instance of wordBankCollection
     private Level level; // instance of Level enum
-    Player player = new Player(); // creating new instance of player
+    //Player player = new Player(); // creating new instance of player
     Prompter prompter = new Prompter();
     Scanner scanner = new Scanner(System.in);
 
@@ -59,19 +60,52 @@ public class Game {
                     questionFactory.getRandomNumber(2, 3) + " character");
             userInput = scanner.nextLine();
 
-            correctAnswer(userInput);
+            if(wordBankCollection.setEasyWords().contains(userInput)){
+                System.out.println(prompter.rightAnswerMessage());
+            } else{
+                System.out.println(prompter.wrongAnswerMessage());
+                userInput = scanner.nextLine();
+                if(wordBankCollection.setEasyWords().contains(userInput)){
+                    System.out.println(prompter.rightAnswerMessage());
+                }else {
+                    System.out.println(prompter.endOfTryMessage());
+                }
+            }
         } else if(lvl.equals(level.MEDIUM.getValue())) {
 
 
-                    System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
+            System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
                             questionFactory.getRandomNumber(4, 6) + " character");
-                    userInput= scanner.nextLine();
+            userInput= scanner.nextLine();
+            if(wordBankCollection.setMediumWords().contains(userInput)){
+                System.out.println(prompter.rightAnswerMessage());
+            }else {
+                System.out.println(prompter.wrongAnswerMessage());
+                userInput= scanner.nextLine();
+                if(wordBankCollection.setMediumWords().contains(userInput)){
+                    System.out.println(prompter.rightAnswerMessage());
+                }else {
+                    System.out.println(prompter.endOfTryMessage());
+                }
+            }
+
 
         } else if(lvl.equals(level.HARD.getValue())) {
 
-                System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
+            System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
                         questionFactory.getRandomNumber(7, 50) + "character");
-                userInput = scanner.nextLine();
+            userInput = scanner.nextLine();
+            if(wordBankCollection.setHardWords().contains(userInput)){
+                System.out.println();
+            }else{
+                System.out.println(prompter.wrongAnswerMessage());
+                userInput =scanner.nextLine();
+                if(wordBankCollection.setHardWords().contains(userInput)){
+                    System.out.println(prompter.rightAnswerMessage());
+                }else{
+                    System.out.println(prompter.endOfTryMessage());
+                }
+            }
 
         }
 
