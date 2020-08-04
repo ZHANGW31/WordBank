@@ -2,7 +2,7 @@ package com.wordbank;
 
 // Enum class
 public enum Level {
-    EASY("Easy"), MEDIUM("Medium"), HARD("Hard");
+    EASY("EASY"), MEDIUM("MEDIUM"), HARD("HARD");
 
     private String value;
 

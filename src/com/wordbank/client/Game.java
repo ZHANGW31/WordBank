@@ -53,18 +53,18 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         String userInput= " ";
         System.out.println("Enter Level. Levels are Easy, Medium and Hard");
-        lvl= scanner.nextLine();
+        lvl= scanner.nextLine().toUpperCase();
         if(lvl.equals(level.EASY.getValue())) {
 
             System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
                     questionFactory.getRandomNumber(2, 3) + " character");
-            userInput = scanner.nextLine();
+            userInput = scanner.nextLine().toLowerCase();
 
             if(wordBankCollection.setEasyWords().contains(userInput)){
                 System.out.println(prompter.rightAnswerMessage());
             } else{
                 System.out.println(prompter.wrongAnswerMessage());
-                userInput = scanner.nextLine();
+                userInput = scanner.nextLine().toLowerCase();
                 if(wordBankCollection.setEasyWords().contains(userInput)){
                     System.out.println(prompter.rightAnswerMessage());
                 }else {
@@ -76,12 +76,12 @@ public class Game {
 
             System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
                             questionFactory.getRandomNumber(4, 6) + " character");
-            userInput= scanner.nextLine();
+            userInput= scanner.nextLine().toLowerCase();
             if(wordBankCollection.setMediumWords().contains(userInput)){
                 System.out.println(prompter.rightAnswerMessage());
             }else {
                 System.out.println(prompter.wrongAnswerMessage());
-                userInput= scanner.nextLine();
+                userInput= scanner.nextLine().toLowerCase();
                 if(wordBankCollection.setMediumWords().contains(userInput)){
                     System.out.println(prompter.rightAnswerMessage());
                 }else {
@@ -94,12 +94,12 @@ public class Game {
 
             System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
                         questionFactory.getRandomNumber(7, 20) + "character");
-            userInput = scanner.nextLine();
+            userInput = scanner.nextLine().toLowerCase();
             if(wordBankCollection.setHardWords().contains(userInput)){
                 System.out.println();
             }else{
                 System.out.println(prompter.wrongAnswerMessage());
-                userInput =scanner.nextLine();
+                userInput =scanner.nextLine().toLowerCase();
                 if(wordBankCollection.setHardWords().contains(userInput)){
                     System.out.println(prompter.rightAnswerMessage());
                 }else{
@@ -111,30 +111,7 @@ public class Game {
 
     }
 
-    public void correctAnswer(String userInput){
-        userInput= scanner.nextLine();
-       switch (level) {
-           case EASY:
-           if (wordBankCollection.setEasyWords().contains(userInput)) {
-               System.out.println(prompter.rightAnswerMessage());
-           } else {
-               System.out.println(prompter.wrongAnswerMessage());;
-           }
-           case MEDIUM:
-               if(wordBankCollection.setMediumWords().contains(userInput)){
-                   System.out.println(prompter.rightAnswerMessage());;
-               }else{
-                   System.out.println(prompter.wrongAnswerMessage());
-               }
-           case HARD:
-               if(wordBankCollection.setHardWords().contains(userInput)){
-                   System.out.println(prompter.rightAnswerMessage());
 
-               } else{
-                   System.out.println(prompter.wrongAnswerMessage());
-               }
-       }
-    }
 
     public int cashBalance(String inputWord){
         int cashOutBalance=0;
@@ -160,11 +137,13 @@ public class Game {
 
 
 
-        Scanner myScan = new Scanner(System.in);
+        /*Scanner myScan = new Scanner(System.in);
         Player p1 = new  Player();
         System.out.println("P1 set your name: ");
         String p1Name = myScan.nextLine();
         p1.setName(p1Name);
+
+         */
 
     }
 
