@@ -1,5 +1,6 @@
 package com.wordbank.client;
 
+import com.wordbank.Level;
 import com.wordbank.QuestionFactory;
 import com.wordbank.WordBankCollection;
 
@@ -13,23 +14,14 @@ public class Game {
     QuestionFactory questionFactory = new QuestionFactory();
     Console console = System.console();
     WordBankCollection wordBankCollection;
-
-
-
+    private Level level;
 
 
 
     public void start() throws IOException {
-        /*
-          *can you put the file path, i am not able to do so
-         */
-        /*Path file = Paths.get("/IdeaProjects/WordBank/data/Welcome_Banner.txt");
-        Files.lines(file).forEach(System.out::println);*/
 
-        /*String banner = Files.readString(Path.of("data", "Welcome_Banner.txt"));
-        Files.lines(Path.of("data","Welcome_Banner.txt")).forEach(line -> System.out.println(line));*/
 
-        //This block of code reads and printlns out the Welcome_Banner.txt file.
+        //This block of code reads and println out the Welcome_Banner.txt file.
         try (BufferedReader reader = new BufferedReader(new FileReader("Welcome_Banner.txt"))) {
             Stream<String> line = reader.lines();
             line.forEach(System.out::println);
@@ -44,16 +36,71 @@ public class Game {
 
     }
 
-    public void askQuestion(){
-        System.out.println(questionFactory.getRandomQuestion()+ ". The word has"+ questionFactory.getRandomNumber(1,3)+
-                "character");
+
+    public void askQuestion (){
+        int i =0;
+        switch (level) {
+            case EASY:
+                // TODO
+                try{
+                    for ( i = 1; i <= 5; i++) {
+                        System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
+                                questionFactory.getRandomNumber(1, 3) + "character");
+
+                    }
+                }catch (NullPointerException e){
+                    e.getMessage();
+                }
+
+            case MEDIUM:
+                for(i=1;i<=5;i++){
+                    System.out.println(questionFactory.getRandomQuestion()+ ". The word has" +
+                            questionFactory.getRandomNumber(4,6)+ " character");
+                }
+            case HARD:
+                for (i=1; i<=5; i++){
+                    System.out.println(questionFactory.getRandomQuestion()+ ". The word has"+
+                            questionFactory.getRandomNumber(7,50)+ "character");
+                }
+        }
     }
 
     public void correctAnswer(){
        String userInput= console.readLine();
-        if(wordBankCollection.setEasyWords().contains(console.readLine())){
-            console.printf("Correct Answer!");
+       switch (level) {
+           case EASY:
+           if (wordBankCollection.setEasyWords().contains(console.readLine())) {
+               console.printf("Correct Answer!");
+           } else {
+               console.printf("Try again");
+           }
+           case MEDIUM:
+               if(wordBankCollection.setMediumWords().contains(console.readLine())){
+                   console.printf("Correct Answer!");
+               }else{
+                   console.printf("Try again");
+               }
+           case HARD:
+               if(wordBankCollection.setHardWords().contains(console.readLine())){
+                   console.printf("Correct Answer!");
+
+               } else{
+                   console.printf("Try again");
+               }
+       }
+    }
+
+    public int cashBalance(String inputWord){
+        int cashOutBalance=0;
+        switch (level){
+            case EASY:
+                cashOutBalance = inputWord.length()*100;
+            case MEDIUM:
+                cashOutBalance = inputWord.length()*250;
+            case HARD:
+                cashOutBalance = inputWord.length()*500;
         }
+        return cashOutBalance;
     }
 
 
@@ -63,7 +110,9 @@ public class Game {
 
         Game game = new Game();
         game.start();
+        game.askQuestion();
         game.correctAnswer();
+
 
 
 
