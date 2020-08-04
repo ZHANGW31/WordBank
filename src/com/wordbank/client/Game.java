@@ -7,7 +7,9 @@ import java.io.BufferedReader;
 import java.io.Console;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.stream.Stream;
 
 
@@ -16,12 +18,14 @@ public class Game {
 
     QuestionFactory questionFactory = new QuestionFactory(); //
     Console console = System.console();
-    WordBankCollection wordBankCollection; // instance of wordBankCollection
+    WordBankCollection wordBankCollection = new WordBankCollection();// instance of wordBankCollection
     private Level level; // instance of Level enum
     //Player player = new Player(); // creating new instance of player
     Prompter prompter = new Prompter();
     Scanner scanner = new Scanner(System.in);
 
+    public Game() throws IOException {
+    }
 
 
     public void start() throws IOException {
@@ -54,35 +58,38 @@ public class Game {
         String userInput= " ";
         System.out.println("Enter Level. Levels are Easy, Medium and Hard");
         lvl= scanner.nextLine().toUpperCase();
+
         if(lvl.equals(level.EASY.getValue())) {
 
-            System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
-                    questionFactory.getRandomNumber(2, 3) + " character");
-            userInput = scanner.nextLine().toLowerCase();
-
-            if(wordBankCollection.setEasyWords().contains(userInput)){
-                System.out.println(prompter.rightAnswerMessage());
-            } else{
-                System.out.println(prompter.wrongAnswerMessage());
+                System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
+                        questionFactory.getRandomNumber(2, 3) + " character");
                 userInput = scanner.nextLine().toLowerCase();
-                if(wordBankCollection.setEasyWords().contains(userInput)){
+            //Collection<String> easyWords = wordBankCollection.getEasyWords();
+
+                if (wordBankCollection.getEasyWords().contains(userInput)) {
                     System.out.println(prompter.rightAnswerMessage());
-                }else {
-                    System.out.println(prompter.endOfTryMessage());
+                } else {
+                    System.out.println(prompter.wrongAnswerMessage());
+                    userInput = scanner.nextLine().toLowerCase();
+                    if (wordBankCollection.getEasyWords().contains(userInput)) {
+                        System.out.println(prompter.rightAnswerMessage());
+                    } else {
+                        System.out.println(prompter.endOfTryMessage());
+                    }
                 }
-            }
+
         } else if(lvl.equals(level.MEDIUM.getValue())) {
 
 
             System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
                             questionFactory.getRandomNumber(4, 6) + " character");
             userInput= scanner.nextLine().toLowerCase();
-            if(wordBankCollection.setMediumWords().contains(userInput)){
+            if(wordBankCollection.getMediumWords().contains(userInput)){
                 System.out.println(prompter.rightAnswerMessage());
             }else {
                 System.out.println(prompter.wrongAnswerMessage());
                 userInput= scanner.nextLine().toLowerCase();
-                if(wordBankCollection.setMediumWords().contains(userInput)){
+                if(wordBankCollection.getMediumWords().contains(userInput)){
                     System.out.println(prompter.rightAnswerMessage());
                 }else {
                     System.out.println(prompter.endOfTryMessage());
@@ -95,12 +102,12 @@ public class Game {
             System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
                         questionFactory.getRandomNumber(7, 20) + "character");
             userInput = scanner.nextLine().toLowerCase();
-            if(wordBankCollection.setHardWords().contains(userInput)){
+            if(wordBankCollection.getHardWords().contains(userInput)){
                 System.out.println();
             }else{
                 System.out.println(prompter.wrongAnswerMessage());
                 userInput =scanner.nextLine().toLowerCase();
-                if(wordBankCollection.setHardWords().contains(userInput)){
+                if(wordBankCollection.getHardWords().contains(userInput)){
                     System.out.println(prompter.rightAnswerMessage());
                 }else{
                     System.out.println(prompter.endOfTryMessage());
