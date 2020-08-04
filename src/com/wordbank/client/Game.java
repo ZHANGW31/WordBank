@@ -24,7 +24,10 @@ public class Game {
     }
 
 
-    public void start() throws IOException {
+    public void start() {
+
+
+
 
 
         //This block of code reads and println out the Welcome_Banner.txt file.
@@ -120,6 +123,18 @@ public class Game {
 
     }
 
+    public int cashBalance(String inputWord){
+        int cashOutBalance=0;
+        switch (level){
+            case EASY:
+                cashOutBalance = inputWord.length()*100;
+            case MEDIUM:
+                cashOutBalance = inputWord.length()*250;
+            case HARD:
+                cashOutBalance = inputWord.length()*500;
+        }
+        return cashOutBalance;
+    }
 
 
     // Main method
