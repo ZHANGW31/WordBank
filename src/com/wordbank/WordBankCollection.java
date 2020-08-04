@@ -1,9 +1,8 @@
 package com.wordbank;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -27,7 +26,7 @@ public class WordBankCollection {
         //This constructor upon creation, sets the path to the data file, in this case is the WordBank.txt.
         //Then using Stream and Files.lines methods, parses the text document and adds each word line by line into a LinkedHashSet.
 
-        Path path = Paths.get("WordBank.txt");
+        /*Path path = Paths.get("WordBank.txt");
 
         Files.lines(path).forEach(System.out::println);
 
@@ -35,7 +34,15 @@ public class WordBankCollection {
             lines.forEach(word -> allWords.add(word));
         } catch (IOException ex) {
             System.out.println("An error has occurred reading the data file");
+        }*/
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("WordBank.txt"))) {
+            Stream<String> line = reader.lines();
+            line.forEach(allWords::add);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
         setEasyWords();
         setMediumWords();
         setHardWords();
