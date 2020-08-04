@@ -15,6 +15,7 @@ public class Player {
     private static int mediumPrize = 200;
     private static int hardPrize = 300;
 
+    private Level level;
 
 
 
@@ -27,6 +28,7 @@ public class Player {
     }
 
     public Player(String name) {
+
         setName(name);
     }
 
@@ -41,73 +43,65 @@ public class Player {
     }
 
     // BUSINESS METHOD
-
-    public void startGame() {
-//        int numberOfGuesses = 0;
-//        String original = selectRandomWord();
-//        String shuffled = getShuffledWord(original);
-//        boolean gameOn = true;
-//        while(gameOn) {
-//            numberOfGuesses++;
-//            String playerGuess = getUserGuess();
-//            if(original.equalsIgnoreCase(playerGuess)) {
-//                System.out.println("Congratulations! You found the word in " + numberOfGuesses +" guesses");
-//                gameOn = false;
-//            }
-//            else {
-//                System.out.println("Sorry, Wrong answer");
-//            }
-//
-//        }
-//
-//    }
+    public int cashBalance(String inputWord){
+        int cashOutBalance=0;
+        switch (level){
+            case EASY:
+                cashOutBalance = inputWord.length()*100;
+            case MEDIUM:
+                cashOutBalance = inputWord.length()*250;
+            case HARD:
+                cashOutBalance = inputWord.length()*500;
+        }
+        return cashOutBalance;
     }
 
+
+
     public String answerTheQuestion(String answer) {
-       return answer;
+
+        return answer;
     }
 
     public boolean isAnsweredAlready (char answer) {
+
         return true; //previousAnswer.contains(answer);
     }
 
 
-
-    public static boolean contains( String [] words, String word) {
-        for(String inWord : words) {
-            if(word == inWord) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public boolean cashOut() {
+
         return true;
     }
 
-    // ACCESSORY METHOD
-    private String getName() {
+    // ACCESSORS METHOD
+    public String getName() {
+
         return name;
     }
 
     public void setName(String name) {
+
         this.name = name;
     }
 
-    private int getCash() {
+    public int getCash() {
+
         return cash;
     }
 
-    private void setCash(int cash) {
+    public void setCash(int cash) {
+
         this.cash = cash;
     }
 
     public int getCurrentLives() {
+
         return currentLives;
     }
 
     public void setCurrentLives(int currentLives) {
+
         this.currentLives = currentLives;
     }
 }
