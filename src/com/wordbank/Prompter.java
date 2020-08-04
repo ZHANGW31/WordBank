@@ -3,32 +3,27 @@ package com.wordbank;
 public class Prompter {
 
     public String nameMessage(){
-        String message = " Please Enter Your Name: ";
-        return message;
+        return "Please Enter Your Name: ";
     }
 
     public String welcomeMessage(){
-        String message = "Good Luck!";
-        return message;
+        return "Good Luck!";
     }
 
     public String rightAnswerMessage(){
-        String message = "Entry accepted! Accessing funds....";
-        return message;
+
+        return "Entry accepted! Accessing funds....";
     }
 
     public String wrongAnswerMessage(){
-        String message = "Access denied... Please Try Again... -The computer is getting suspicious of you- ";
-        return message;
+        return "Access denied... Please Try Again... -The computer is getting suspicious of you- ";
     }
 
     public String endOfTryMessage(){
-        String message = "Uh oh, looks like you got too greedy! A SWAT team breaks through your windows, GAME OVER!";
-        return message;
+        return "Uh oh, looks like you got too greedy! A SWAT team breaks through your windows, GAME OVER!";
     }
 
     public String rightAnswerCashAmount(int cashReward){
-        String message = "You have received: " + cashReward + " in intCoin. Depositing in your digital wallet now.";
-        return message;
+        return "You have received: " + cashReward + " worth of intCoin. Depositing in your digital wallet now.";
     }
 }
