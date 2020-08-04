@@ -47,6 +47,8 @@ public class WordBankCollection {
         setMediumWords();
         setHardWords();
 
+
+
     }
     //Accessor Methods
 
@@ -94,6 +96,23 @@ public class WordBankCollection {
     }
 
     //Business methods
+
+    public int longestLengthWordInSet(Set<String> inputSet){
+        String longestWord;
+        int result = 7;
+
+        for (String word : inputSet){
+            if (word.length() > result){
+                longestWord = word;
+                System.out.println("current longest word is: " + longestWord);
+                result = word.length();
+            }
+        }
+
+        return result;
+
+    }
+    
 
 
     //TODO: create a method that removes the word from the list if the user guesses it correctly
