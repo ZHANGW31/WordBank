@@ -39,7 +39,7 @@ public class QuestionFactory {
         return randomNumber;
     }
 
-    public Set<String> validGeneratedQuestion(int length, char firstCharacter, Set<String> inputSet){
+    public Set<String> answerKey(int length, char firstCharacter, Set<String> inputSet){
 
         int counter = 0;
         Set<String> resultSet = new LinkedHashSet<>();
@@ -53,6 +53,24 @@ public class QuestionFactory {
         }
         System.out.println("There are " + counter + " possible words.");
         return resultSet;
+    }
+
+    public boolean validateQuestion(int length, char firstCharacter, Set<String> inputSet){
+        int counter = 0;
+        boolean result = false;
+
+        for (String word: inputSet) {
+            if (word.charAt(0) == firstCharacter && word.length() == length){
+                counter++;
+            }
+        }
+        if (counter > 0){
+            result = false;
+        } else {
+            result = true;
+        }
+
+        return result;
     }
 
 
