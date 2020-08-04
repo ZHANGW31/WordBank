@@ -112,6 +112,20 @@ public class WordBankCollection {
         return result;
 
     }
+
+    public String validGeneratedQuestion(int length, char firstCharacter, Set<String> inputSet){
+
+        int counter = 0;
+
+        for (String word: inputSet) {
+            if (word.charAt(0) == firstCharacter && word.length() == length){
+                counter++;
+            }
+        }
+
+
+        return "There are " + counter + " possible words.";
+    }
     
 
 
