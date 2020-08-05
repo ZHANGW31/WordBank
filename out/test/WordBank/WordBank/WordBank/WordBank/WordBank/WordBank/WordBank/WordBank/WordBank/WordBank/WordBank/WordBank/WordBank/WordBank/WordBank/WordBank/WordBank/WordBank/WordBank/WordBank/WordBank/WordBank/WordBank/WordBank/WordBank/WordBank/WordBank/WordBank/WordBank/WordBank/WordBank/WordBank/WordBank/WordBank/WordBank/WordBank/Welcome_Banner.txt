@@ -67,6 +67,6 @@ The major security flaw of their system is that it provides passcode hints to th
 
 However beware!!! If you get greedy and caught in the act... you will get sent straight to jail!
 
-Proceed at your own cost....
+Proceed at your own risk....
 
 

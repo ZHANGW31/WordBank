@@ -12,6 +12,12 @@ import java.util.*;
 public class WordBankCollectionTest {
     WordBankCollection wordBankCollection = new WordBankCollection();
 
+    public void testing() {
+
+    List<String> easyWords = new LinkedList<>();
+    easyWords.addAll(wordBankCollection.getEasyWords());
+    System.out.println(easyWords);
+   }
     public WordBankCollectionTest() throws IOException {
     }
     public void generateMediumQuestion(){
@@ -35,12 +41,13 @@ public class WordBankCollectionTest {
 //
 //    }
     public static void main(String[] args) throws IOException {
-        WordBankCollection wordBank = new WordBankCollection();
-        Prompter prompter= new Prompter();
 
-        Level level = Level.EASY;
-        WordBankCollectionTest wordBankCollectionTest = new WordBankCollectionTest();
-        wordBankCollectionTest.generateMediumQuestion();
+//        Prompter prompter= new Prompter();
+//
+//        Level level = Level.EASY;
+       WordBankCollectionTest wordBankCollectionTest = new WordBankCollectionTest();
+//        wordBankCollectionTest.generateMediumQuestion();
+        wordBankCollectionTest.testing();
     }
 
 }

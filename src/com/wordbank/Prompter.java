@@ -9,6 +9,9 @@ public class Prompter {
     public String welcomeMessage() {
         return "Good Luck!";
     }
+    public String selectLevel(){
+        return "Select Level. Levels are Easy, Medium and Hard";
+    }
 
     public String rightAnswerMessage() {
 
@@ -24,7 +27,11 @@ public class Prompter {
     }
 
     public String rightAnswerCashAmount(int cashReward) {
-        return "You have received: " + cashReward + " worth of intCoin. Depositing in your digital wallet now.";
+        return "You have received: $" + cashReward + " worth of intCoin. Depositing in your digital wallet now.";
+    }
+
+    public String cashOutBalanceMessage(int cashOut){
+        return "Your cash out balance is: $"+ cashOut;
     }
 
 }

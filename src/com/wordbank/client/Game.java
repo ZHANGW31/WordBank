@@ -4,6 +4,8 @@ import com.wordbank.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
@@ -46,33 +48,91 @@ public class Game {
     }
 
 
-    public void askQuestion (String lvl){
-        int balance =0;
+    public void askQuestion () throws IOException {
+        String lvl = null;
+        int balance = 0;
         Scanner scanner = new Scanner(System.in);
-        String userInput= " ";
-        System.out.println("Enter Level. Levels are Easy, Medium and Hard");
-        lvl= scanner.nextLine().toUpperCase();
+        String userInput = " ";
+        System.out.println(prompter.selectLevel());
+        lvl = scanner.nextLine().toUpperCase();
         int randomNumberStore;
+        int cashEarned = 0;
         int cashOutBalance=0;
-        int lives =3;
+
+        List<String> easyWords = new LinkedList<>();
+        easyWords.addAll(wordBankCollection.getEasyWords());
+
+        List<String> mediumWords = new LinkedList<>();
+        mediumWords.addAll(wordBankCollection.getMediumWords());
+
+        List<String> hardWords = new LinkedList<>();
+        hardWords.addAll(wordBankCollection.getHardWords());
+
+        int lives = 3;
+
+        do {
+
+                if (lvl.equals(level.EASY.getValue()) && lives > 0) {
+                    questionFactory.generateEasyQuestion();
+                    userInput = scanner.nextLine();
+                    if (easyWords.contains(userInput)) {
+                        System.out.println(prompter.rightAnswerMessage());
+
+                        cashEarned= player.cashEarned(userInput);
+                        System.out.println(prompter.rightAnswerCashAmount(cashEarned));
+                        ;
+                    } else {
+                        System.out.println(prompter.wrongAnswerMessage());
+                        lives-=1;
+                    }
+                }
+                if (lives>0) {
+                    System.out.println(prompter.selectLevel());
+
+                    lvl = scanner.nextLine().toUpperCase();
+                }
+
+            if (lvl.equals(level.MEDIUM.getValue()) && lives > 0) {
+                questionFactory.generateMediumQuestion();
+                userInput= scanner.nextLine();
+                if(mediumWords.contains(userInput)){
+                    System.out.println(prompter.rightAnswerMessage());
+                    cashEarned=player.cashEarned(userInput);
+                    System.out.println(prompter.rightAnswerCashAmount(cashEarned));
+                    cashOutBalance = cashEarned;
+                    System.out.println(prompter.cashOutBalanceMessage(cashOutBalance));
+                }else{
+                    System.out.println(prompter.wrongAnswerMessage());
+                    lives-=1;
+                }
+            }
+            if (lvl.equals(level.HARD.getValue()) && lives > 0) {
+                questionFactory.generateHardQuestion();
+            }
+        } while (lives <= 0);
+
+    }
+        //System.out.println(prompter.endOfTryMessage());
+
+        /*
         if(lvl.equals(level.EASY.getValue())) {
                 questionFactory.generateEasyQuestion();
                 userInput = scanner.nextLine().toLowerCase();
-                if(wordBankCollection.getEasyWords().contains(userInput)){
+                if(easyWords.contains(userInput)){
                     System.out.println(prompter.rightAnswerMessage());
                     cashOutBalance=player.cashEarned(userInput);
                     System.out.println(" Enter to Continue");
                     System.out.println();
                     questionFactory.generateEasyQuestion();
                     userInput=scanner.nextLine().toLowerCase();
-                    if(wordBankCollection.getEasyWords().contains(userInput)){
+                    if(easyWords.contains(userInput)){
                         System.out.println(prompter.rightAnswerMessage());
-                        cashOutBalance =player.cashEarned(userInput);
-                        cashOutBalance +=cashOutBalance;
+                        cashOutBalance +=player.cashEarned(userInput);
+                        System.out.println(prompter.rightAnswerCashAmount(cashOutBalance));
                     }else{
                         System.out.println(prompter.wrongAnswerMessage());
                         userInput= scanner.nextLine();
-                        if(wordBankCollection.getEasyWords().contains(userInput)){
+                        if(easyWords.contains(userInput)){
                             System.out.println(prompter.rightAnswerMessage());
                         }
                     }
@@ -132,29 +192,19 @@ public class Game {
         }
 
     }
+    */
 
-    public int cashBalance(String inputWord){
-        int cashOutBalance=0;
-        switch (level){
-            case EASY:
-                cashOutBalance = inputWord.length()*100;
-            case MEDIUM:
-                cashOutBalance = inputWord.length()*250;
-            case HARD:
-                cashOutBalance = inputWord.length()*500;
+
+
+        // Main method
+        public static void main (String[]args) throws IOException
+        { // this IO exception needs to be removed, it is only for
+            // getting compile error away.
+
+            Game game = new Game();
+            game.start();
+            game.askQuestion();
+
         }
-        return cashOutBalance;
-    }
-
-
-    // Main method
-    public static void main(String[] args) throws IOException { // this IO exception needs to be removed, it is only for
-        // getting compile error away.
-
-        Game game = new Game();
-        game.start();
-        game.askQuestion(Level.EASY.getValue());
-
-    }
 
 }

@@ -43,14 +43,7 @@ public class Player {
     // BUSINESS METHOD
     public int cashEarned(String inputWord){
         int cash=0;
-        switch (level){
-            case EASY:
-                cash = inputWord.length()*100;
-            case MEDIUM:
-                cash = inputWord.length()*250;
-            case HARD:
-                cash = inputWord.length()*500;
-        }
+        cash = inputWord.length() *100;
         return cash;
     }
 
