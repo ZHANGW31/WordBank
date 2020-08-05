@@ -11,9 +11,7 @@ public class Player {
     private int cash; // current score
     private int currentLives = 3; // player starts with current live
     private int maxLives = 3;
-    private static int easyPrize = 100;
-    private static int mediumPrize = 200;
-    private static int hardPrize = 300;
+
 
     private Level level;
 
