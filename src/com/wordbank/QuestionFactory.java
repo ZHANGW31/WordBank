@@ -22,15 +22,15 @@ public class QuestionFactory {
     }
 
 
-    public int getRandomNumber(int min, int max){
-        int i;
-
-        Random random = new Random();
-        int randomNumber =  random.nextInt((max-min)+1)+min;
-
-
-        return randomNumber;
-    }
+//    public int getRandomNumber(int min, int max){
+//        int i;
+//
+//        Random random = new Random();
+//        int randomNumber =  random.nextInt((max-min)+1)+min;
+//
+//
+//        return randomNumber;
+//    }
 
     public Set<String> answerKey(int length, char firstCharacter, Set<String> inputSet){
 
@@ -49,52 +49,66 @@ public class QuestionFactory {
         return resultSet;
     }
 
-    //
-    public void generateEasyQuestion(){
-
-        String question= " ";
+    public void generateQuestion() {
+        String question;
         String randomWord;
         int rand;
-        List<String> easyQuestion = new LinkedList<>(); // creating new Linkedlist easyQuestion
-        easyQuestion.addAll(wordBankCollection.getEasyWords()); // adding all easy words to easyQuestion LinkedList
-        Collections.sort(easyQuestion); // sorting the list
+        List<String> questionsToBeAsked = new LinkedList<>();
+        questionsToBeAsked.addAll(wordBankCollection.getAllWords());
+        Collections.sort(questionsToBeAsked);
         Random random = new Random();
-        rand = random.nextInt((easyQuestion.size()-1)+1)+1; // gets random integer based on size of
-        randomWord = easyQuestion.get(rand);
-        question = " The word starting with: " + randomWord.charAt(0)+". The word has "+ randomWord.length()+ " character.";
-        System.out.println(question);
-    }
-
-    public void generateMediumQuestion(){
-
-        String question= null;
-        String randomWord = null;
-        int rand;
-        List<String> mediumQuestion = new LinkedList<>();
-        mediumQuestion.addAll(wordBankCollection.getMediumWords()); // adds all medium words to the LinkedList
-        Collections.sort(mediumQuestion); // sorts the Linkedlist
-        Random random = new Random(); // instantiating Random Method
-        rand = random.nextInt((mediumQuestion.size()-1)+1)+1;
-        randomWord = mediumQuestion.get(rand);
-        question = " The word starting with: " + randomWord.charAt(0)+ ". The word has "+ randomWord.length() + " characters.";
-        System.out.println(question);
-    }
-
-    public void generateHardQuestion(){
-
-        String question = null;
-        String randomWord = null;
-        int rand;
-        List<String> hardQuestion = new LinkedList<>(); // create new LinkedList
-        hardQuestion.addAll(wordBankCollection.getHardWords()); // adds all hardWords to the LinkedList
-        Collections.sort(hardQuestion); // sorts the Linkedlist
-        Random random = new Random(); // instantiating Random Method
-        rand = random.nextInt((hardQuestion.size()-1)+1)+1;
-        randomWord = hardQuestion.get(rand);
-        question = " The word starting with: "+ randomWord.charAt(0) + ". The word has " + randomWord.length() +" characters.";
+        rand = random.nextInt((questionsToBeAsked.size()-1)+1)+1;
+        randomWord = questionsToBeAsked.get(rand);
+        question = " The word starting with: "+ randomWord.charAt(0)+ ". The word has "+ randomWord.length() + " characters.";
         System.out.println(question);
 
     }
+//    //
+//    public void generateEasyQuestion(){
+//
+//        String question= " ";
+//        String randomWord;
+//        int rand;
+//        List<String> easyQuestion = new LinkedList<>(); // creating new Linkedlist easyQuestion
+//        easyQuestion.addAll(wordBankCollection.getEasyWords()); // adding all easy words to easyQuestion LinkedList
+//        Collections.sort(easyQuestion); // sorting the list
+//        Random random = new Random();
+//        rand = random.nextInt((easyQuestion.size()-1)+1)+1; // gets random integer based on size of
+//        randomWord = easyQuestion.get(rand);
+//        question = " The word starting with: " + randomWord.charAt(0)+". The word has "+ randomWord.length()+ " character.";
+//        System.out.println(question);
+//    }
+//
+//    public void generateMediumQuestion(){
+//
+//        String question= null;
+//        String randomWord = null;
+//        int rand;
+//        List<String> mediumQuestion = new LinkedList<>();
+//        mediumQuestion.addAll(wordBankCollection.getMediumWords()); // adds all medium words to the LinkedList
+//        Collections.sort(mediumQuestion); // sorts the Linkedlist
+//        Random random = new Random(); // instantiating Random Method
+//        rand = random.nextInt((mediumQuestion.size()-1)+1)+1;
+//        randomWord = mediumQuestion.get(rand);
+//        question = " The word starting with: " + randomWord.charAt(0)+ ". The word has "+ randomWord.length() + " characters.";
+//        System.out.println(question);
+//    }
+//
+//    public void generateHardQuestion(){
+//
+//        String question = null;
+//        String randomWord = null;
+//        int rand;
+//        List<String> hardQuestion = new LinkedList<>(); // create new LinkedList
+//        hardQuestion.addAll(wordBankCollection.getHardWords()); // adds all hardWords to the LinkedList
+//        Collections.sort(hardQuestion); // sorts the Linkedlist
+//        Random random = new Random(); // instantiating Random Method
+//        rand = random.nextInt((hardQuestion.size()-1)+1)+1;
+//        randomWord = hardQuestion.get(rand);
+//        question = " The word starting with: "+ randomWord.charAt(0) + ". The word has " + randomWord.length() +" characters.";
+//        System.out.println(question);
+//
+//    }
 
 
 

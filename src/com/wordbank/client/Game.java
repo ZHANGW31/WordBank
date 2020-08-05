@@ -73,7 +73,7 @@ public class Game {
         do {
 
                 if (lvl.equals(level.EASY.getValue()) && lives > 0) {
-                    questionFactory.generateEasyQuestion();
+                    questionFactory.generateQuestion();
                     userInput = scanner.nextLine();
                     if (easyWords.contains(userInput)) {
                         System.out.println(prompter.rightAnswerMessage());
@@ -86,14 +86,10 @@ public class Game {
                         lives-=1;
                     }
                 }
-                if (lives>0) {
-                    System.out.println(prompter.selectLevel());
 
-                    lvl = scanner.nextLine().toUpperCase();
-                }
 
             if (lvl.equals(level.MEDIUM.getValue()) && lives > 0) {
-                questionFactory.generateMediumQuestion();
+                questionFactory.generateQuestion();
                 userInput= scanner.nextLine();
                 if(mediumWords.contains(userInput)){
                     System.out.println(prompter.rightAnswerMessage());
@@ -107,7 +103,15 @@ public class Game {
                 }
             }
             if (lvl.equals(level.HARD.getValue()) && lives > 0) {
-                questionFactory.generateHardQuestion();
+                questionFactory.generateQuestion();
+                userInput = scanner.nextLine();
+                if(hardWords.contains(userInput)){
+                    System.out.println(prompter.rightAnswerMessage());
+                    cashEarned =player.cashEarned(userInput);
+                    System.out.println(prompter.rightAnswerCashAmount(cashEarned));
+                    cashOutBalance+=cashEarned;
+                    System.out.println(prompter.cashOutBalanceMessage(cashOutBalance));
+                }
             }
         } while (lives <= 0);
 
