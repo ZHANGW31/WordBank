@@ -9,6 +9,7 @@ public class Player {
 
     private String name;
     private int cash; // current score
+    private int totalCash = 0; // default value as 0
     private int currentLives = 3; // player starts with current live
     private int maxLives = 3;
 
@@ -101,5 +102,17 @@ public class Player {
     public void setCurrentLives(int currentLives) {
 
         this.currentLives = currentLives;
+    }
+
+    public int getTotalCash() {
+        return totalCash;
+    }
+
+    public void setTotalCash(int totalCash) {
+        this.totalCash = totalCash;
+    }
+
+    public void updateTotalCash (int cashEarned) {
+        this.totalCash += cashEarned;
     }
 }
