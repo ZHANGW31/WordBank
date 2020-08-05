@@ -1,32 +1,46 @@
 package com.wordbank.test;
 
+import com.wordbank.Level;
+import com.wordbank.Prompter;
+import com.wordbank.QuestionFactory;
 import com.wordbank.WordBankCollection;
 
 import java.io.IOException;
-
+import java.util.*;
 
 
 public class WordBankCollectionTest {
+    WordBankCollection wordBankCollection = new WordBankCollection();
 
+    public WordBankCollectionTest() throws IOException {
+    }
+    public void generateMediumQuestion(){
+
+        String question= null;
+        String randomWord = null;
+        int rand;
+        List<String> mediumQuestion = new LinkedList<>();
+        mediumQuestion.addAll(wordBankCollection.getMediumWords()); // adds all medium words to the LinkedList
+        Collections.sort(mediumQuestion); // sorts the Linkedlist
+        Random random = new Random(); // instantiating Random Method
+        rand = random.nextInt((mediumQuestion.size()-1)+1);
+        randomWord = mediumQuestion.get(rand);
+        question = " The word starting with: " + randomWord.charAt(0)+ ". The word has "+ randomWord.length() + " characters.";
+        System.out.println(question);
+    }
+
+
+
+//    public void generateQuestion(){
+//
+//    }
     public static void main(String[] args) throws IOException {
         WordBankCollection wordBank = new WordBankCollection();
-        System.out.println(wordBank.getEasyWords().size());
-        System.out.println(wordBank.getMediumWords().size());
-        System.out.println(wordBank.getHardWords().size());
-        System.out.println("Total number of words: " + wordBank.getAllWords().size());
-        System.out.println(wordBank.longestLengthWordInSet(wordBank.getHardWords()));
+        Prompter prompter= new Prompter();
 
-
-
-
-//        System.out.println(wordBank.validGeneratedQuestion(2,'x',wordBank.getEasyWords()));
-
-
-        /*Game game = new Game();
-        game.start();
-        game.askQuestion(Level.EASY.getValue());
-
-         */
+        Level level = Level.EASY;
+        WordBankCollectionTest wordBankCollectionTest = new WordBankCollectionTest();
+        wordBankCollectionTest.generateMediumQuestion();
     }
 
 }

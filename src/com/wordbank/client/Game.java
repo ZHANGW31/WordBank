@@ -27,9 +27,6 @@ public class Game {
     public void start() {
 
 
-
-
-
         //This block of code reads and println out the Welcome_Banner.txt file.
         try (BufferedReader reader = new BufferedReader(new FileReader("Welcome_Banner.txt"))) {
             Stream<String> line = reader.lines();
@@ -56,57 +53,67 @@ public class Game {
         System.out.println("Enter Level. Levels are Easy, Medium and Hard");
         lvl= scanner.nextLine().toUpperCase();
         int randomNumberStore;
-
+        int cashOutBalance=0;
+        int lives =3;
         if(lvl.equals(level.EASY.getValue())) {
-                //int temp = questionFactory.getRandomNumber(2,3);
-                System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
-                        questionFactory.getRandomNumber(2,3) + " character");
+                questionFactory.generateEasyQuestion();
                 userInput = scanner.nextLine().toLowerCase();
-                int cashEarning = player.cashEarned(userInput);
-
-                if ((wordBankCollection.getEasyWords().contains(userInput))&& (userInput.length()==
-                        questionFactory.getRandomNumber(2,3))) {
+                if(wordBankCollection.getEasyWords().contains(userInput)){
                     System.out.println(prompter.rightAnswerMessage());
-
-                    System.out.println(prompter.rightAnswerCashAmount((cashEarning)));
-
-                } else {
-                    System.out.println(prompter.wrongAnswerMessage());
-                    userInput = scanner.nextLine().toLowerCase();
-                    if ((wordBankCollection.getEasyWords().contains(userInput))&& (userInput.length()==questionFactory.getRandomNumber(2,3))) {
+                    cashOutBalance=player.cashEarned(userInput);
+                    System.out.println(" Enter to Continue");
+                    System.out.println();
+                    questionFactory.generateEasyQuestion();
+                    userInput=scanner.nextLine().toLowerCase();
+                    if(wordBankCollection.getEasyWords().contains(userInput)){
                         System.out.println(prompter.rightAnswerMessage());
-                        System.out.println(prompter.rightAnswerCashAmount(cashEarning));
-                    } else {
-                        System.out.println(prompter.endOfTryMessage());
+                        cashOutBalance =player.cashEarned(userInput);
+                        cashOutBalance +=cashOutBalance;
+                    }else{
+                        System.out.println(prompter.wrongAnswerMessage());
+                        userInput= scanner.nextLine();
+                        if(wordBankCollection.getEasyWords().contains(userInput)){
+                            System.out.println(prompter.rightAnswerMessage());
+                        }
                     }
-                    balance = cashEarning;
-                }
-
-        } else if(lvl.equals(level.MEDIUM.getValue())) {
-
-
-            System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
-                            questionFactory.getRandomNumber(4, 6) + " character");
-            userInput= scanner.nextLine().toLowerCase();
-            if(wordBankCollection.getMediumWords().contains(userInput)){
-                System.out.println(prompter.rightAnswerMessage());
-                System.out.println(prompter.rightAnswerCashAmount(player.cashEarned(userInput)));
-            }else {
-                System.out.println(prompter.wrongAnswerMessage());
-                userInput= scanner.nextLine().toLowerCase();
-                if(wordBankCollection.getMediumWords().contains(userInput)){
-                    System.out.println(prompter.rightAnswerMessage());
-                    System.out.println(prompter.rightAnswerCashAmount(player.cashEarned(userInput)));
                 }else {
-                    System.out.println(prompter.endOfTryMessage());
+                    System.out.println(prompter.wrongAnswerMessage());
+                    lives =lives-1;
+                    userInput= scanner.nextLine().toLowerCase();
+                    if(wordBankCollection.getEasyWords().contains(userInput)){
+                        System.out.println(prompter.rightAnswerMessage());
+                        cashOutBalance = player.cashEarned(userInput);
+                    }
                 }
-            }
 
 
-        } else if(lvl.equals(level.HARD.getValue())) {
 
-            System.out.println(questionFactory.getRandomQuestion() + ". The word has" +
-                        questionFactory.getRandomNumber(7, 20) + "character");
+        }  if((lvl.equals(level.MEDIUM.getValue())) && lives >0) {
+             questionFactory.generateMediumQuestion();
+             userInput= scanner.nextLine().toLowerCase();
+
+             if(wordBankCollection.getMediumWords().contains(userInput)){
+                 System.out.println(prompter.rightAnswerMessage());
+                 cashOutBalance = player.cashEarned(userInput);
+
+             }else{
+                 System.out.println(prompter.wrongAnswerMessage());
+                 lives-=1;
+                 userInput = scanner.nextLine().toLowerCase();
+                 if(wordBankCollection.getMediumWords().contains(userInput)){
+                     System.out.println(prompter.rightAnswerMessage());
+                     cashOutBalance = player.cashEarned(userInput);
+                 }
+             }
+
+
+
+
+
+
+        }  if((lvl.equals(level.HARD.getValue())) && lives>0) {
+
+
             userInput = scanner.nextLine().toLowerCase();
             if(wordBankCollection.getHardWords().contains(userInput)){
                 System.out.println(prompter.rightAnswerMessage());
